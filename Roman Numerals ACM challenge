@@ -1,0 +1,42 @@
+def map(x):
+    return {
+        'M': 1000,
+        'D': 500,
+        'C': 100,
+        'L': 50,
+        'X': 10,
+        'V': 5,
+        'I': 1,
+    }[x]
+
+def split_char_to_num(string_input):
+	char_list = list(string_input)
+	returned_list = list();
+	for x in range(0, len(char_list)):
+		if(char_list[x] != '-'):
+			returned_list.append(map(char_list[x]))
+		else:
+			returned_list.append('-')
+	return returned_list
+	
+def logic(the_list):
+	startnum = the_list[len(the_list) - 1]
+	largest = startnum
+	g = len(the_list) - 2
+	while g >= 0:
+		if largest <= the_list[g]:
+			startnum = the_list[g] + startnum
+			largest = the_list[g]
+		elif largest > the_list[g]:
+			startnum = startnum - the_list[g]
+		g = g - 1
+	return startnum
+
+y = raw_input()
+X = y.split('-');
+Year = logic(split_char_to_num(X[0]));
+Month = logic(split_char_to_num(X[1]));
+Day = logic(split_char_to_num(X[2]));
+print str(Year).zfill(4)+"-"+str(Month).zfill(2)+"-"+str(Day).zfill(2)
+			
+
