@@ -1,0 +1,11 @@
+num = input();
+our_list = list()
+while num > 0:
+	x = raw_input()
+	our_list.append(x)
+	num = num - 1
+	
+our_list.reverse()
+
+for word in our_list:
+	print word
