@@ -1,0 +1,31 @@
+root = raw_input()
+num = input();
+num_rules = input()
+key_list = list()
+value_list = list()
+
+def growString(the_character):
+	for c in range(0, len(key_list)):
+		if key_list[c] == the_character:
+			the_character = value_list[c]
+	return the_character
+
+while num_rules > 0:
+	keyValue = raw_input()
+	line = keyValue.split(" ")
+	if len(line) > 1:
+		key_list.append(line[0])
+		value_list.append(line[1])
+	else:
+		key_list.append(line[0])
+		value_list.append("")
+	num_rules = num_rules - 1
+
+while num > 0:
+	root_list = list(root)
+	for b in range(0, len(root_list)):
+		root_list[b] = growString(root_list[b])
+	root = "".join(root_list)
+	num = num - 1
+	
+print len(root)
